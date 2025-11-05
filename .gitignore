@@ -1,8 +1,9 @@
+# Игнор Visual Studio служебных файлов
 .vs/
 
-
+# Игнор JSON настроек Visual Studio Code
 cppProperties.json
 
-
+# Игнор README (в любом регистре)
 README
 README.md
