@@ -1,5 +1,8 @@
 .vs/
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
+
+
+cppProperties.json
+
+
+README
+README.md
