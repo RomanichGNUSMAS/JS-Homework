@@ -138,6 +138,7 @@ void getInfo(JSObject* obj) {
 		}
 	}
 }
+
 int main() {
 	JSObject* object = JSObject_new();
 	JSValue* value = (JSValue*)malloc(sizeof(JSValue) * 3);
