@@ -1,25 +1,71 @@
-class TrafficLight {
-    constructor(red, green, yellow) {
-        this.array = [red, green, yellow]
-        this.counter = 0
+class LightState {
+    action() {
+        throw new Error(`don't use this'`)
+    }
+
+    getColor() {
+        throw new Error(`don't use this'`)
+    }
+
+    next(light) {
+        throw new Error(`don't use this'`)
+    }
+}
+
+class RedLight extends LightState {
+    getColor() {
+        console.log('Red')
+    }
+
+    action() {
+        console.log('RED: cars must wait')
+    }
+
+    next(light) {
+        light.setState(new GreenLight());
+    }
+}
+
+class GreenLight {
+    getColor(){
+       console.log('green')
+    }
+    action() {
+        console.log('GREEN: cars can go');
+    }
+    next(light) {
+        light.setState(new YellowLight())
+    }
+}
+
+class YellowLight extends LightState {
+    getColor() {
+        console.log('yellow')
+    }
+    action(){
+        console.log('YELLOW: cars prepare to stop')
+    }
+    next(light) {
+        light.setState(new RedLight())
+    }
+}
+
+class TrafficLight extends LightState {
+    constructor() {
+        super()
+        this.state = new RedLight()
     }
 
     show() {
-        switch (this.counter) {
-            case 0:
-                console.log(`RED: Cars will wait`)
-                break
-            case 1:
-                console.log('GREEN: Cars may drive')
-                break
-            case 2:
-                console.log('YELLOW: Prepare to stop.')
-                break
-        }
+        this.state.action()
     }
+
+    setState(newState) {
+        this.state = newState
+    }
+
     next() {
-        this.counter++
-        if (this.counter == 3) this.counter = 0
+        this.state.next(this)
     }
 }
 
