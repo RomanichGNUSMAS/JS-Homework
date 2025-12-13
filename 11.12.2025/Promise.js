@@ -119,6 +119,16 @@ class MyPromise {
     catch(onRejected) {
         return this.then(null, onRejected);
     }
+
+    static resolve(val) {
+        return MyPromise((res) => res(val));
+    }
+
+    static reject(val) {
+        return MyPromise((res, rej) => rej(val));
+    }
+
+
 }
 
 const p = new MyPromise((res, rej) => res(20));
