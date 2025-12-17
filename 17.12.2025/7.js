@@ -3,7 +3,7 @@ class Range {
 		this.start = start;
 		this.end = end;
 		this[Symbol.iterator] = function*(){
-			for(let i = start;i <= end;++i){
+			for(let i = this.start;i <= this.end;++i){
 				yield i;
 		}};
 	}}
